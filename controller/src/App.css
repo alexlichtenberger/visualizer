@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+button {
+  display: block;
+  color: #505050;
+  font-weight: bold;
+  background-color: #dedede;
+  height: 30px;
+  width: 90%;
+  border-radius: 5px;
+  border: none;
+  font-size: 12px;
+  box-sizing: border-box;
+  padding: 0 10px;
+  margin: 10px 5%;
+  text-decoration: none;
+  line-height: 20px;
+  font-weight: bold;
+}
+
+.half {
+  display: inline-block;
+  width: 45%;
+  margin: 0 2.5%;
+}
+
+button:hover {
+  background-color: #cccccc;
+}
+
+button:active {
+  background-color: #bbbbbb;
+  outline: none;
+}
+
+button:focus {
+  outline: none;
+}
+
+button:disabled {
+  color: #dddddd;
+  background: #bbbbbb;
+}
+
+p {
+  text-align: center;
+}

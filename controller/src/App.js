@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import socketClient from 'socket.io-client';
+import './App.css';
 
 class App extends Component {
   constructor(props) {
@@ -32,22 +33,31 @@ class App extends Component {
       <div>
         <p>sensitivity: {this.state.sensitivity}</p>
         <p>mode: {this.state.mode}</p>
-        <button onClick={() => this.changeMode('noise')}>noise</button>
-        <button onClick={() => this.changeMode('random')}>random</button>
-        <button onClick={() => this.changeMode('sound')}>sound</button>
-        <button onClick={() => this.changeMode('color')}>color</button>
-        <button onClick={() => this.changeMode('white')}>white</button>
-        <button onClick={() => this.changeMode('bubble')}>bubble</button>
-        <button onClick={() => this.changeMode('circle')}>circle</button>
-        <button
-          onClick={() => this.changeSensitvity(this.state.sensitivity + 5)}
-        >
-          +
+        <button onClick={() => this.changeMode('noise')}>Smooth Colors</button>
+        <button onClick={() => this.changeMode('random')}>Random Colors</button>
+        <button onClick={() => this.changeMode('sound')}>
+          Sound-Based Colors
         </button>
-        <button
-          onClick={() => this.changeSensitvity(this.state.sensitivity - 5)}
-        >
-          -
+        <button onClick={() => this.changeMode('white')}>Mono-Chrome</button>
+        <button onClick={() => this.changeMode('bubble')}>Chill Mode</button>
+        <button onClick={() => this.changeMode('circle')}>Circle Mode</button>
+        <p>Change sensitivity: </p>
+        <div className="half">
+          <button
+            onClick={() => this.changeSensitvity(this.state.sensitivity + 5)}
+          >
+            +
+          </button>
+        </div>
+        <div className="half">
+          <button
+            onClick={() => this.changeSensitvity(this.state.sensitivity - 5)}
+          >
+            -
+          </button>
+        </div>
+        <button onClick={() => this.changeMode('color')}>
+          PRESS AT YOUR OWN RISK
         </button>
       </div>
     );
