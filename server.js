@@ -1,6 +1,14 @@
 const express = require('express');
 
+const cors = require('cors');
+
 const app = express();
+
+app.use(
+  cors({
+    origin: 'http://10.147.140.5:3002',
+  })
+);
 
 app.use('/vis', express.static('public'));
 
