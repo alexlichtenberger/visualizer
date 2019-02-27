@@ -17,7 +17,7 @@ app.use('/vis', express.static('vis'));
 
 app.use('/con', express.static('./build'));
 
-let server = app.listen(() => {
+let server = app.listen(3002, () => {
   console.log('Running on port 3002');
 });
 
