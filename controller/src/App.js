@@ -34,11 +34,30 @@ class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  getModeNameFromID() {
+    switch (this.state.mode) {
+      case 'noise':
+        return 'Smooth Colors';
+      case 'random':
+        return 'Random Colors (skrillex)';
+      case 'sound':
+        return 'Sound-Based Colors (EDM)';
+      case 'white':
+        return 'Mono-Chrome';
+      case 'bubble':
+        return 'Chill Mode (lofi)';
+      case 'circle':
+        return 'Circle Mode (rock/rap/pop)';
+      case 'color':
+        return 'Danger Mode';
+    }
+  }
+
   render() {
     return (
       <div>
         <p>sensitivity: {this.state.sensitivity}</p>
-        <p>mode: {this.state.mode}</p>
+        <p>mode: {this.getModeNameFromID()}</p>
         <button onClick={() => this.changeMode('noise')}>Smooth Colors</button>
         <button onClick={() => this.changeMode('random')}>
           Random Colors (skrillex)
