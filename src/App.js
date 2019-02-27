@@ -109,6 +109,7 @@ class App extends Component {
           value={this.state.id}
           onChange={this.saveToState}
           placeholder="id"
+          autocapitalize="off"
         />
         <button onClick={() => this.changeMode('color')}>
           ⚠️ PRESS AT YOUR OWN RISK ⚠️
