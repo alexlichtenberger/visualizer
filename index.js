@@ -16,7 +16,7 @@ app.get('/', (req, res) => res.send('Hello World!'));
 
 app.use('/vis', express.static('vis'));
 
-// app.use('/con', express.static('./build'));
+app.use('/con', express.static('./build'));
 
 let server = app.listen(process.env.PORT || 3002, () => {
   console.log('See the volume Server is running');
