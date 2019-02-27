@@ -6,23 +6,29 @@ let colorSpeed = 10;
 let sensitivity = 150;
 let mode;
 let socket;
+let enabled = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   phase = 0;
   zoff = 0;
-  mic = new p5.AudioIn();
   background(0);
+  mic = new p5.AudioIn();
   mic.start();
   mode = 'white';
-  socket = io.connect('http://10.147.140.5:3002');
+  // socket = io.connect('http://10.147.140.5:3002');
+  socket = io.connect('http://localhost:3002');
   socket.on('mode', data => {
-    mode = data.mode;
-    console.log(data.mode);
+    if (data.id === socket.id.substring(0, 4)) {
+      mode = data.mode;
+      console.log(data.mode);
+    }
   });
   socket.on('sensitivity', data => {
-    sensitivity = data.sensitivity;
-    console.log(data.sensitivity);
+    if (data.id === socket.id.substring(0, 4)) {
+      sensitivity = data.sensitivity;
+      console.log(data.sensitivity);
+    }
   });
 }
 
@@ -124,38 +130,25 @@ function draw() {
   endShape(CLOSE);
   phase += 0.01;
   zoff += 0.01;
+  if (keyIsDown(ENTER)) {
+    textSize(64);
+    fill(255);
+    text(
+      'Visualizer ID: ' + socket.id.substring(0, 4),
+      20 - width / 2,
+      60 - height / 2
+    );
+  }
+  if (!enabled) {
+    textSize(64);
+    fill(255);
+    text('Press Space to enable Audio Input', 20 - width / 2, 60 - height / 2);
+  }
 }
 
 function keyPressed() {
-  if (key === '1') {
-    mode = 'random';
+  if (key === ' ') {
+    mic.mediaStream.context.resume();
+    enabled = true;
   }
-  if (key === '2') {
-    mode = 'noise';
-  }
-  if (key === '3') {
-    mode = 'white';
-  }
-  if (key === '4') {
-    mode = 'sound';
-  }
-  if (key === 'd') {
-    mode = 'color';
-  }
-  if (key === '5') {
-    mode = 'bubble';
-  }
-  if (key === '6') {
-    mode = 'circle';
-  }
-  if (key === '=') {
-    sensitivity += 5;
-  }
-  if (key === '-') {
-    sensitivity -= 5;
-  }
-}
-
-function changeMode(name) {
-  mode = name;
 }

@@ -6,7 +6,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://10.147.140.5:3002',
+    // origin: 'http://10.147.140.5:3002',
+    origin: 'http://localhost:3002',
   })
 );
 
