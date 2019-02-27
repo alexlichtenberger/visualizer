@@ -150,7 +150,7 @@ function draw() {
     fill(255);
     noStroke();
     text(
-      'Press Space \nor Click anywhere\nto enable Audio Input',
+      "Press Space \nor Click anywhere\nto enable Audio Input\nor to hide this message if it's working",
       20 - width / 2,
       60 - height / 2
     );
