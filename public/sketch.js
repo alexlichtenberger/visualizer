@@ -134,6 +134,7 @@ function draw() {
   phase += 0.01;
   zoff += 0.01;
   if (keyIsDown(ENTER)) {
+    stroke(255);
     textSize(64);
     fill(255);
     text(
