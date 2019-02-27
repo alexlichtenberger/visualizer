@@ -11,9 +11,9 @@ app.use(
   })
 );
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', express.static('./homepage'));
 
-app.use('/vis', express.static('vis'));
+app.use('/vis', express.static('./vis'));
 
 app.use('/con', express.static('./build'));
 

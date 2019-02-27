@@ -7,6 +7,7 @@ let sensitivity = 150;
 let mode;
 let socket;
 let enabled = false;
+let fullscreen = false;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -15,7 +16,7 @@ function setup() {
   background(0);
   mic = new p5.AudioIn();
   mic.start();
-  mode = 'white';
+  mode = 'circle';
   socket = io.connect('https://see-the-volume.herokuapp.com/');
   // socket = io.connect('http://localhost:3002');
   socket.on('mode', data => {
@@ -134,7 +135,7 @@ function draw() {
   phase += 0.01;
   zoff += 0.01;
   if (keyIsDown(ENTER)) {
-    stroke(255);
+    noStroke();
     textSize(64);
     fill(255);
     textFont('Courier');
@@ -147,12 +148,18 @@ function draw() {
   if (!enabled) {
     textSize(64);
     fill(255);
+    noStroke();
     text(
-      "Press Space to enable Audio Input\nIf it still doesn't work, check the console (cmd+alt+I) for more info",
+      'Press Space \nor Click anywhere\nto enable Audio Input',
       20 - width / 2,
       60 - height / 2
     );
   }
+}
+
+function mousePressed() {
+  mic.mediaStream.context.resume();
+  enabled = true;
 }
 
 function keyPressed() {
@@ -160,4 +167,25 @@ function keyPressed() {
     mic.mediaStream.context.resume();
     enabled = true;
   }
+  if (key === 'f') {
+    if (!fullscreen) {
+      document.body.requestFullscreen();
+    } else {
+      document.exitFullscreen();
+    }
+    fullscreen = !fullscreen;
+  }
+}
+
+function doubleClicked() {
+  if (!fullscreen) {
+    document.body.requestFullscreen();
+  } else {
+    document.exitFullscreen();
+  }
+  fullscreen = !fullscreen;
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }

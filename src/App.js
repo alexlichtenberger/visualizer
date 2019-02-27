@@ -55,9 +55,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <p>sensitivity: {this.state.sensitivity}</p>
-        <p>mode: {this.getModeNameFromID()}</p>
+      <div className="content">
+        <p>Current Sensitivity: {this.state.sensitivity}</p>
+        <p>Current Mode: {this.getModeNameFromID()}</p>
         <button onClick={() => this.changeMode('noise')}>Smooth Colors</button>
         <button onClick={() => this.changeMode('random')}>
           Random Colors (skrillex)
@@ -82,16 +82,16 @@ class App extends Component {
         </p>
         <div className="half">
           <button
-            onClick={() => this.changeSensitvity(this.state.sensitivity + 5)}
+            onClick={() => this.changeSensitvity(this.state.sensitivity - 5)}
           >
-            +
+            -
           </button>
         </div>
         <div className="half">
           <button
-            onClick={() => this.changeSensitvity(this.state.sensitivity - 5)}
+            onClick={() => this.changeSensitvity(this.state.sensitivity + 5)}
           >
-            -
+            +
           </button>
         </div>
         <p

@@ -8,6 +8,11 @@ body {
   font-family: sans-serif;
 }
 
+.content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 button {
   display: block;
   color: #505050;
