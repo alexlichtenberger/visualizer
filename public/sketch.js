@@ -15,7 +15,7 @@ function setup() {
   background(0);
   mic.start();
   mode = 'white';
-  socket = io.connect('http://localhost:3002');
+  socket = io.connect('http://10.147.140.5:3002');
   socket.on('mode', data => {
     mode = data.mode;
     console.log(data.mode);

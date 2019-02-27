@@ -6,7 +6,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      endpoint: 'http://localhost:3002',
+      endpoint: 'http://10.147.140.5:3002',
       mode: 'white',
       sensitivity: 150,
     };
