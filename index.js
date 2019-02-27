@@ -4,12 +4,12 @@ const cors = require('cors');
 
 const app = express();
 
-app.use(
-  cors({
-    origin: 'http://10.147.140.5:3002',
-    // origin: 'http://localhost:3002',
-  })
-);
+// app.use(
+//   cors({
+//     origin: 'http://10.147.140.5:3002',
+//     // origin: 'http://localhost:3002',
+//   })
+// );
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
