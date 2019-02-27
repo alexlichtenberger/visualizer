@@ -11,6 +11,8 @@ app.use(
   })
 );
 
+app.get('/', 'hello world');
+
 app.use('/vis', express.static('public'));
 
 app.use('/con', express.static('./controller/build'));
