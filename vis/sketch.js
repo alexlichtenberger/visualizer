@@ -137,6 +137,7 @@ function draw() {
     stroke(255);
     textSize(64);
     fill(255);
+    textFont('Courier');
     text(
       'Visualizer ID: ' + socket.id.substring(0, 4),
       20 - width / 2,
