@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "homepage": "http://localhost:3002/con",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "update": "bash update.sh"
+    "update": "bash update.sh",
+    "build": "react-scripts build"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +16,16 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "nodemon": "^1.18.10",
-    "socket.io": "^2.2.0"
-  }
+    "react": "^16.8.3",
+    "react-dom": "^16.8.3",
+    "react-scripts": "^2.1.5",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

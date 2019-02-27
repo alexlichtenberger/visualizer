@@ -11,11 +11,11 @@ app.use(
   })
 );
 
-app.get('/', 'hello world');
+app.get('/', (req, res) => res.send('Hello World!'));
 
-app.use('/vis', express.static('public'));
+app.use('/vis', express.static('vis'));
 
-app.use('/con', express.static('./controller/build'));
+app.use('/con', express.static('./build'));
 
 let server = app.listen(3002, () => {
   console.log('Running on port 3002');
