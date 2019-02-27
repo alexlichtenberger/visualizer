@@ -30,6 +30,9 @@ function setup() {
       console.log(data.sensitivity);
     }
   });
+  console.log(
+    'You need to treat this site as a secure origin for AudioIn to work.  If it doesn\'t, type: "chrome://flags/#unsafely-treat-insecure-origin-as-secure" into your address bar and add "http://10.147.140.5:3002" to the list, the click relaunch chrome and come back to this page'
+  );
 }
 
 function draw() {
@@ -142,7 +145,11 @@ function draw() {
   if (!enabled) {
     textSize(64);
     fill(255);
-    text('Press Space to enable Audio Input', 20 - width / 2, 60 - height / 2);
+    text(
+      "Press Space to enable Audio Input\nIf it still doesn't work, check the console (cmd+alt+I) for more info",
+      20 - width / 2,
+      60 - height / 2
+    );
   }
 }
 
