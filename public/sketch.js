@@ -30,8 +30,8 @@ function setup() {
       console.log(data.sensitivity);
     }
   });
-  console.log(
-    'You need to treat this site as a secure origin for AudioIn to work.  If it doesn\'t, type: "chrome://flags/#unsafely-treat-insecure-origin-as-secure" into your address bar and add "http://10.147.140.5:3002" to the list, the click relaunch chrome and come back to this page'
+  console.warn(
+    '\n\nYou need to treat this site as a secure origin for AudioIn to work.\n\nIf it doesn\'t, type: "chrome://flags/#unsafely-treat-insecure-origin-as-secure" into your address bar and add "http://10.147.140.5:3002" to the list.\n\nThen click relaunch chrome and come back to this page\n\n'
   );
 }
 
