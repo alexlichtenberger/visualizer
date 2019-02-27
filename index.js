@@ -24,19 +24,19 @@ let server = app.listen(process.env.PORT || 3002, () => {
 let io = require('socket.io')(server);
 
 io.sockets.on('connection', socket => {
-  console.log('Client Connected: ' + socket.id);
+  // console.log('Client Connected: ' + socket.id);
 
   socket.on('mode', data => {
-    console.log(data);
+    // console.log(data);
     io.sockets.emit('mode', data);
   });
 
   socket.on('sensitivity', data => {
-    console.log(data);
+    // console.log(data);
     io.sockets.emit('sensitivity', data);
   });
 
   socket.on('disconnect', function() {
-    console.log('Client has disconnected');
+    // console.log('Client has disconnected');
   });
 });
