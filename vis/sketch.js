@@ -16,7 +16,8 @@ function setup() {
   mic = new p5.AudioIn();
   mic.start();
   mode = 'white';
-  socket = io.connect('http://10.147.140.5:3002');
+  socket = io.connect('https://see-the-volume.herokuapp.com/');
+  // socket = io.connect('http://10.147.140.5:3002');
   // socket = io.connect('http://localhost:3002');
   socket.on('mode', data => {
     if (data.id === socket.id.substring(0, 4)) {

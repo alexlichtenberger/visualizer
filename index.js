@@ -6,8 +6,9 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://10.147.140.5:3002',
+    // origin: 'http://10.147.140.5:3002',
     // origin: 'http://localhost:3002',
+    origin: 'https://see-the-volume.herokuapp.com/',
   })
 );
 
@@ -17,8 +18,8 @@ app.use('/vis', express.static('vis'));
 
 // app.use('/con', express.static('./build'));
 
-let server = app.listen(3002, () => {
-  console.log('Running on port 3002');
+let server = app.listen(() => {
+  console.log('See the volume Server is running');
 });
 
 let io = require('socket.io')(server);
