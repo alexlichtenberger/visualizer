@@ -106,9 +106,11 @@ class App extends Component {
         </p>
         <input
           type="text"
+          id="idInput"
           name="id"
           value={this.state.id}
           onChange={this.saveToState}
+          onBlur={this.saveToState}
           placeholder="id"
           autocapitalize="off"
         />

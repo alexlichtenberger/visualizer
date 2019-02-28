@@ -8,6 +8,8 @@ let mode;
 let socket;
 let enabled = false;
 let fullscreen = false;
+let controller = false;
+let frame;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -31,9 +33,7 @@ function setup() {
       console.log(data.sensitivity);
     }
   });
-  console.warn(
-    '\n\nYou need to treat this site as a secure origin for AudioIn to work.\n\nIf it doesn\'t, type: "chrome://flags/#unsafely-treat-insecure-origin-as-secure" into your address bar and add "http://10.147.140.5:3002" to the list.\n\nThen click relaunch chrome and come back to this page\n\n'
-  );
+  frame = select('#controller');
 }
 
 function draw() {
@@ -157,7 +157,29 @@ function draw() {
   }
 }
 
+function setId() {
+  let input = document
+    .getElementById('controller')
+    .contentWindow.document.getElementById('idInput');
+  input.focus();
+  input.value = socket.id.substring(0, 4);
+  input.blur();
+}
+
+function toggleController() {
+  if (controller) {
+    frame.style('display', 'none');
+  } else {
+    frame.style('display', 'block');
+  }
+  controller = !controller;
+  setId();
+}
+
 function mousePressed() {
+  if (enabled) {
+    toggleController();
+  }
   mic.mediaStream.context.resume();
   enabled = true;
   background(0);
@@ -176,6 +198,9 @@ function keyPressed() {
       document.exitFullscreen();
     }
     fullscreen = !fullscreen;
+  }
+  if (key === 'c') {
+    toggleController();
   }
 }
 
