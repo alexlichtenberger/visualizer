@@ -6,16 +6,16 @@ const app = express();
 
 app.use(
   cors({
-    // origin: 'http://localhost:3002',
-    origin: 'https://see-the-volume.herokuapp.com/',
+    origin: 'http://localhost:3002',
+    // origin: 'https://see-the-volume.herokuapp.com/',
   })
 );
 
 app.use(express.static(__dirname + '/homepage'));
 
-app.use('/vis', express.static('./vis'));
+app.use('/visualizer', express.static('./vis'));
 
-app.use('/con', express.static('./build'));
+app.use('/controller', express.static('./build'));
 
 let server = app.listen(process.env.PORT || 3002, () => {
   console.log('See the volume Server is running');

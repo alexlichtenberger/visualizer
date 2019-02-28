@@ -43,6 +43,7 @@ input {
   width: 90%;
   color: #aaaaaa;
   background-color: white;
+  border: 2px solid white;
 }
 
 input:focus {

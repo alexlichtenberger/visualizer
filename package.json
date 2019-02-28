@@ -3,11 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
-  "homepage": "http://localhost:3002/con",
+  "homepage": "http://localhost:3002/controller",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "update": "bash update.sh",
+    "deploy": "zsh deploy.zsh",
     "build": "react-scripts build"
   },
   "author": "",
