@@ -39,7 +39,7 @@ class App extends Component {
       case 'noise':
         return 'Smooth Colors';
       case 'random':
-        return 'Random Colors (skrillex)';
+        return 'Random Colors (Dubstep)';
       case 'sound':
         return 'Sound-Based Colors (EDM)';
       case 'white':
@@ -60,7 +60,7 @@ class App extends Component {
         <p>Current Mode: {this.getModeNameFromID()}</p>
         <button onClick={() => this.changeMode('noise')}>Smooth Colors</button>
         <button onClick={() => this.changeMode('random')}>
-          Random Colors (skrillex)
+          Random Colors (Dubstep)
         </button>
         <button onClick={() => this.changeMode('sound')}>
           Sound-Based Colors (EDM)

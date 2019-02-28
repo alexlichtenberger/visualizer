@@ -160,12 +160,14 @@ function draw() {
 function mousePressed() {
   mic.mediaStream.context.resume();
   enabled = true;
+  background(0);
 }
 
 function keyPressed() {
   if (key === ' ') {
     mic.mediaStream.context.resume();
     enabled = true;
+    background(0);
   }
   if (key === 'f') {
     if (!fullscreen) {

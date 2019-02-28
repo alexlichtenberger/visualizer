@@ -11,7 +11,7 @@ app.use(
   })
 );
 
-app.get('/', express.static('./homepage'));
+app.use(express.static(__dirname + '/homepage'));
 
 app.use('/vis', express.static('./vis'));
 
