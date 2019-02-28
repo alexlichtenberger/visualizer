@@ -35,6 +35,7 @@ class App extends Component {
   };
 
   getModeNameFromID() {
+    // eslint-disable-next-line
     switch (this.state.mode) {
       case 'noise':
         return 'Smooth Colors';
@@ -112,7 +113,13 @@ class App extends Component {
           autocapitalize="off"
         />
         <button onClick={() => this.changeMode('color')}>
-          ⚠️ PRESS AT YOUR OWN RISK ⚠️
+          <span role="img" aria-label="warn">
+            ⚠️
+          </span>{' '}
+          PRESS AT YOUR OWN RISK
+          <span role="img" aria-label="warn">
+            ⚠️
+          </span>{' '}
         </button>
       </div>
     );
