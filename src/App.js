@@ -27,11 +27,14 @@ class App extends Component {
     this.socket.on('mode', data => {
       if (this.state.id === data.id) {
         this.setState({ mode: data.mode });
+      } else {
+        this.setState({ mode: this.state.mode });
       }
     });
     this.socket.on('sensitivity', data => {
       if (this.state.id === data.id) {
-        this.setState({ sensitivity: data.sesitivity });
+        this.setState({ sensitivity: data.sensitivity });
+      } else {
       }
     });
   }
