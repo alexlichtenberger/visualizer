@@ -24,10 +24,16 @@ class App extends Component {
 
   componentDidMount() {
     this.socket = socketClient(this.state.endpoint);
-    this.socket.on('mode', data => this.setState({ mode: data.mode }));
-    this.socket.on('sensitivity', data =>
-      this.setState({ sensitivity: data.sensitivity })
-    );
+    this.socket.on('mode', data => {
+      if (this.state.id === data.id) {
+        this.setState({ mode: data.mode });
+      }
+    });
+    this.socket.on('sensitivity', data => {
+      if (this.state.id === data.id) {
+        this.setState({ sensitivity: data.sesitivity });
+      }
+    });
   }
 
   saveToState = e => {
