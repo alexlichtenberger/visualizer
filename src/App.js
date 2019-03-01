@@ -8,7 +8,7 @@ class App extends Component {
     this.state = {
       endpoint: 'https://see-the-volume.herokuapp.com/',
       // endpoint: 'http://localhost:3002',
-      mode: 'white',
+      mode: 'circle',
       sensitivity: 150,
       id: '',
     };
