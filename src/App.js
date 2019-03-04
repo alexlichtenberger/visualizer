@@ -6,11 +6,12 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      endpoint: 'https://see-the-volume.herokuapp.com/',
-      // endpoint: 'http://localhost:3002',
+      // endpoint: 'https://see-the-volume.herokuapp.com/',
+      endpoint: 'http://localhost:3002',
       mode: 'circle',
       sensitivity: 150,
       id: '',
+      connected: false,
     };
   }
 
@@ -27,20 +28,23 @@ class App extends Component {
     this.socket.on('mode', data => {
       if (this.state.id === data.id) {
         this.setState({ mode: data.mode });
-      } else {
-        this.setState({ mode: this.state.mode });
       }
     });
     this.socket.on('sensitivity', data => {
       if (this.state.id === data.id) {
         this.setState({ sensitivity: data.sensitivity });
-      } else {
+      }
+    });
+    this.socket.on('sendinfo', data => {
+      if (this.state.id === data.id) {
+        this.setState({ ...data });
       }
     });
   }
 
   saveToState = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({ [e.target.name]: e.target.value, connected: false });
+    this.socket.emit('checkid', { id: this.state.id });
   };
 
   getModeNameFromID() {
@@ -104,25 +108,30 @@ class App extends Component {
             +
           </button>
         </div>
-        <p
-          style={{
-            color: '#bbbbbb',
-            marginBottom: 0,
-          }}
-        >
-          Hold the enter key in the visualizer to get the ID and enter it below
-          to connect the controller:
-        </p>
-        <input
-          type="text"
-          id="idInput"
-          name="id"
-          value={this.state.id}
-          onChange={this.saveToState}
-          onBlur={this.saveToState}
-          placeholder="id"
-          autocapitalize="off"
-        />
+        <div id="KeyInput">
+          <p
+            style={{
+              color: '#bbbbbb',
+              marginBottom: 0,
+            }}
+          >
+            Hold the enter key in the visualizer to get the ID and enter it
+            below to connect the controller:
+          </p>
+          <input
+            type="text"
+            id="idInput"
+            name="id"
+            value={this.state.id}
+            onChange={this.saveToState}
+            onBlur={this.saveToState}
+            placeholder="id"
+            autocapitalize="off"
+            style={{
+              border: this.state.connected ? '2px solid lime' : '2px solid red',
+            }}
+          />
+        </div>
         <button onClick={() => this.changeMode('color')}>
           <span role="img" aria-label="warn">
             ⚠️

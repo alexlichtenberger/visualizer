@@ -19,8 +19,8 @@ function setup() {
   mic = new p5.AudioIn();
   mic.start();
   mode = 'circle';
-  socket = io.connect('https://see-the-volume.herokuapp.com/');
-  // socket = io.connect('http://localhost:3002');
+  // socket = io.connect('https://see-the-volume.herokuapp.com/');
+  socket = io.connect('http://localhost:3002');
   socket.on('mode', data => {
     if (data.id === socket.id.substring(0, 4)) {
       mode = data.mode;
@@ -31,6 +31,16 @@ function setup() {
     if (data.id === socket.id.substring(0, 4)) {
       sensitivity = data.sensitivity;
       console.log(data.sensitivity);
+    }
+  });
+  socket.on('checkid', data => {
+    if (data.id === socket.id.substring(0, 4)) {
+      socket.emit('sendinfo', {
+        id: socket.id.substring(0, 4),
+        sensitivity,
+        mode,
+        connected: true,
+      });
     }
   });
   frame = select('#controller');
@@ -164,6 +174,10 @@ function setId() {
   input.focus();
   input.value = socket.id.substring(0, 4);
   input.blur();
+  keyIn = document
+    .getElementById('controller')
+    .contentWindow.document.getElementById('KeyInput');
+  keyIn.style.display = 'none';
 }
 
 function toggleController() {

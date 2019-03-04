@@ -44,6 +44,7 @@ input {
   color: #aaaaaa;
   background-color: white;
   font-family: 'Courier New', Courier, monospace;
+  border: 2px solid white;
 }
 
 input:focus {
