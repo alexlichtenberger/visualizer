@@ -6,8 +6,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // endpoint: 'https://see-the-volume.herokuapp.com/',
-      endpoint: 'http://localhost:3002',
+      endpoint: 'https://see-the-volume.herokuapp.com/',
+      // endpoint: 'http://localhost:3002',
       mode: 'circle',
       sensitivity: 150,
       id: '',

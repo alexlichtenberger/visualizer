@@ -6,8 +6,8 @@ const app = express();
 
 app.use(
   cors({
-    origin: 'http://localhost:3002',
-    // origin: 'https://see-the-volume.herokuapp.com/',
+    // origin: 'http://localhost:3002',
+    origin: 'https://see-the-volume.herokuapp.com/',
   })
 );
 
